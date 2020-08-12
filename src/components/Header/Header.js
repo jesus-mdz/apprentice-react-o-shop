@@ -29,7 +29,7 @@ function Header() {
               Shopping Cart
             </Link>
           </li>
-          <li className={`nav-item dropdown ${show ? 'show' : null}`}>
+          <li className={`nav-item dropdown ${show ? 'show' : ''}`}>
             <Link
               className="nav-link dropdown-toggle"
               to="/#"
@@ -42,7 +42,7 @@ function Header() {
               Dropdown
             </Link>
             <div
-              className={`dropdown-menu ${show ? 'show' : null}`}
+              className={`dropdown-menu ${show ? 'show' : ''}`}
               aria-labelledby="dropdown01"
             >
               <Link className="dropdown-item" to="/orders">
