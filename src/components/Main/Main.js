@@ -1,7 +1,6 @@
 import React from 'react';
 import './Main.scss';
 import Products from '../../pages/Products/Products';
-import Home from '../../pages/Home/Home';
 import ShoppingCart from '../../pages/ShoppingCart/ShoppingCart';
 import Orders from '../../pages/Orders/Orders';
 import OrderSuccess from '../../pages/OrderSuccess/OrderSuccess';
