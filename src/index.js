@@ -4,13 +4,20 @@ import '../src/styles/styles.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './store/store';
+import { configureFakeBackend } from './utils/fakeBackend';
+import history from './utils/history';
 
-import { BrowserRouter } from 'react-router-dom';
+configureFakeBackend();
 
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+  <Provider store={store}>
+    <Router history={history}>
+      <App />
+    </Router>
+  </Provider>,
   document.getElementById('root')
 );
 

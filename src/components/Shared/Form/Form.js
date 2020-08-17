@@ -2,28 +2,44 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Input from '../Input/Input';
 import { useDispatch } from 'react-redux';
+import loginActions from '../../../store/login/action';
+import registerActions from '../../../store/register/action';
 
 function Form(props) {
-  const { title, inputArr, tertiaryButton, actions } = props;
+  const { title, inputArray, tertiaryButton } = props;
   const [isValid, setIsValid] = useState('');
   const [amountTrueArray, setAmountTrueArray] = useState([]);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(actions.logout());
+    if (title === 'Login') {
+      dispatch(loginActions.logout());
+    }
   }, [dispatch]);
 
   const onSubmit = (event) => {
-    const inputLength = inputArr.length;
+    event.preventDefault();
+    const inputLength = inputArray.length;
     const trueLength = amountTrueArray.length;
 
     if (inputLength === trueLength) {
-      amountTrueArray.map((inputObject) => {
-        const { field } = inputObject;
-      });
       setIsValid(true);
-      dispatch(actions.login());
+
+      if (title === 'Login') {
+        dispatch(
+          loginActions.login(amountTrueArray[0].value, amountTrueArray[1].value)
+        );
+      } else {
+        dispatch(
+          registerActions.register(
+            amountTrueArray[0].value,
+            amountTrueArray[1].value,
+            amountTrueArray[2].value,
+            amountTrueArray[3].value
+          )
+        );
+      }
     } else {
       event.preventDefault();
       setIsValid(false);
@@ -34,7 +50,7 @@ function Form(props) {
     <div className="col-lg-4 offset-lg-4">
       <h2>{title}</h2>
       <form onSubmit={onSubmit}>
-        {inputArr.map((title, i) => (
+        {inputArray.map((title, i) => (
           <Input
             key={i}
             title={title}

@@ -7,9 +7,17 @@ function Input(props) {
 
   useEffect(() => {
     if (value !== '' && doesCurrentFieldExistOnArray() === false) {
-      setAmountTrueArray([...amountTrueArray, { title: value, valid: true }]);
+      setAmountTrueArray([...amountTrueArray, { title, valid: true }]);
     } else if (value === '' && doesCurrentFieldExistOnArray() === true) {
-      setAmountTrueArray(amountTrueArray.filter((obj) => obj.input !== title));
+      setAmountTrueArray(amountTrueArray.filter((obj) => obj.title !== title));
+    }
+
+    if (amountTrueArray.length > 0) {
+      amountTrueArray.map((object) => {
+        if (object.title === title) {
+          object.value = value;
+        }
+      });
     }
   }, [value]);
 
@@ -19,10 +27,10 @@ function Input(props) {
 
   const doesCurrentFieldExistOnArray = () => {
     const results = amountTrueArray.find((obj) => {
-      return obj.input === title;
+      return obj.title === title;
     });
 
-    return results && results.input ? true : false;
+    return results && results.title ? true : false;
   };
 
   return (

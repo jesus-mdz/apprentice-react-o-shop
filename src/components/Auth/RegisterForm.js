@@ -6,7 +6,7 @@ function RegisterForm() {
     <Form
       type="text"
       title="Register"
-      inputArr={['First Name', 'Last Name', 'Username', 'Password']}
+      inputArray={['First Name', 'Last Name', 'Username', 'Password']}
       tertiaryButton={{ title: 'Cancel', link: '/login' }}
     />
   );

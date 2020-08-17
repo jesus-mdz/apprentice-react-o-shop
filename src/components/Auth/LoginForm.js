@@ -6,7 +6,7 @@ function LoginForm() {
     <Form
       type="text"
       title="Login"
-      inputArr={['username', 'password']}
+      inputArray={['username', 'password']}
       tertiaryButton={{ title: 'Register', link: '/register' }}
     />
   );
