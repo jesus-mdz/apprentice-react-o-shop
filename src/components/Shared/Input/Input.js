@@ -1,36 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
 function Input(props) {
-  const { type, title, isValid, amountTrueArray, setAmountTrueArray } = props;
-
+  const { type, title, isValid, allInputsObject, setAllInputsObject } = props;
   const [value, setValue] = useState('');
 
   useEffect(() => {
-    if (value !== '' && doesCurrentFieldExistOnArray() === false) {
-      setAmountTrueArray([...amountTrueArray, { title, valid: true }]);
-    } else if (value === '' && doesCurrentFieldExistOnArray() === true) {
-      setAmountTrueArray(amountTrueArray.filter((obj) => obj.title !== title));
-    }
-
-    if (amountTrueArray.length > 0) {
-      amountTrueArray.map((object) => {
-        if (object.title === title) {
-          object.value = value;
-        }
-      });
-    }
+    allInputsObject[`${title}`] = value;
+    setAllInputsObject(allInputsObject);
   }, [value]);
 
   const onChange = (event) => {
     setValue(event.target.value);
-  };
-
-  const doesCurrentFieldExistOnArray = () => {
-    const results = amountTrueArray.find((obj) => {
-      return obj.title === title;
-    });
-
-    return results && results.title ? true : false;
   };
 
   return (

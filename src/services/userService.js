@@ -4,11 +4,11 @@ export const userService = {
   register,
 };
 
-function login(username, password) {
+function login(object) {
   const requestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ username, password }),
+    body: JSON.stringify(object),
   };
 
   return fetch(`/users/authenticate`, requestOptions)
@@ -24,11 +24,11 @@ function logout() {
   localStorage.removeItem('user');
 }
 
-function register(firstName, lastName, username, password) {
+function register(object) {
   const requestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ firstName, lastName, username, password }),
+    body: JSON.stringify(object),
   };
 
   return fetch(`/users/register`, requestOptions).then((handleResponse) => {

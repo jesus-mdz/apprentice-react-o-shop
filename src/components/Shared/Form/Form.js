@@ -2,61 +2,28 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Input from '../Input/Input';
 import { useDispatch } from 'react-redux';
-import loginActions from '../../../store/login/action';
-import registerActions from '../../../store/register/action';
 
 function Form(props) {
-  const { title, inputArray, tertiaryButton } = props;
-  const [isValid, setIsValid] = useState('');
-  const [amountTrueArray, setAmountTrueArray] = useState([]);
+  const { title, inputArray, tertiaryButton, restart, onSubmit } = props;
+  const [allInputsObject, setAllInputsObject] = useState({});
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (title === 'Login') {
-      dispatch(loginActions.logout());
-    }
+    restart();
   }, [dispatch]);
-
-  const onSubmit = (event) => {
-    event.preventDefault();
-    const inputLength = inputArray.length;
-    const trueLength = amountTrueArray.length;
-
-    if (inputLength === trueLength) {
-      setIsValid(true);
-
-      if (title === 'Login') {
-        dispatch(
-          loginActions.login(amountTrueArray[0].value, amountTrueArray[1].value)
-        );
-      } else {
-        dispatch(
-          registerActions.register(
-            amountTrueArray[0].value,
-            amountTrueArray[1].value,
-            amountTrueArray[2].value,
-            amountTrueArray[3].value
-          )
-        );
-      }
-    } else {
-      event.preventDefault();
-      setIsValid(false);
-    }
-  };
 
   return (
     <div className="col-lg-4 offset-lg-4">
       <h2>{title}</h2>
-      <form onSubmit={onSubmit}>
-        {inputArray.map((title, i) => (
+      <form onSubmit={(event) => onSubmit(event, allInputsObject)}>
+        {inputArray.map((title, index) => (
           <Input
-            key={i}
+            id={index}
+            key={index}
             title={title}
-            isValid={isValid}
-            amountTrueArray={amountTrueArray}
-            setAmountTrueArray={setAmountTrueArray}
+            allInputsObject={allInputsObject}
+            setAllInputsObject={setAllInputsObject}
           />
         ))}
         <div className="form-group">
