@@ -8,6 +8,7 @@ function RegisterForm() {
   const dispatch = useDispatch();
 
   const onSubmit = (event, object) => {
+    event.preventDefault();
     setIsSubmitted(true);
     if (
       object.firstName !== '' &&
