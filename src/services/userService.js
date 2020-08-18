@@ -5,6 +5,7 @@ export const userService = {
 };
 
 function login(object) {
+  console.log(object);
   const requestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

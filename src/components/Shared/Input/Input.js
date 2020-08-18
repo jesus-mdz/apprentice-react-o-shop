@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
 function Input(props) {
-  const { type, title, isValid, allInputsObject, setAllInputsObject } = props;
+  const {
+    type,
+    title,
+    allInputsObject,
+    setAllInputsObject,
+    isSubmitted,
+  } = props;
   const [value, setValue] = useState('');
 
   useEffect(() => {
@@ -16,16 +22,14 @@ function Input(props) {
   return (
     <div className="form-group">
       <input
-        className={`input100 ${
-          value === '' && isValid === false ? 'is-valid' : ''
-        }`}
+        className={`input100 ${value === '' ? 'is-valid' : ''}`}
         type={type}
         name={title}
         placeholder={title}
         value={value}
         onChange={onChange}
       />
-      {value === '' && isValid === false ? (
+      {value === '' && isSubmitted === true ? (
         <div>{title} cannot be empty</div>
       ) : null}
     </div>

@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Form from '../Shared/Form/Form';
 import registerActions from '../../store/register/action';
 import { useDispatch } from 'react-redux';
 
 function RegisterForm() {
+  const [isSubmitted, setIsSubmitted] = useState('');
   const dispatch = useDispatch();
 
   const onSubmit = (event, object) => {
+    setIsSubmitted(true);
     if (
       object.firstName !== '' &&
       object.lastName !== '' &&
@@ -29,6 +31,8 @@ function RegisterForm() {
         return null;
       }}
       onSubmit={onSubmit}
+      isSubmitted={isSubmitted}
+      setIsSubmitted={setIsSubmitted}
     />
   );
 }

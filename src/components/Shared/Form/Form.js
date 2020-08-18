@@ -4,7 +4,15 @@ import Input from '../Input/Input';
 import { useDispatch } from 'react-redux';
 
 function Form(props) {
-  const { title, inputArray, tertiaryButton, restart, onSubmit } = props;
+  const {
+    title,
+    inputArray,
+    tertiaryButton,
+    restart,
+    onSubmit,
+    isSubmitted,
+    setIsSubmitted,
+  } = props;
   const [allInputsObject, setAllInputsObject] = useState({});
 
   const dispatch = useDispatch();
@@ -24,6 +32,8 @@ function Form(props) {
             title={title}
             allInputsObject={allInputsObject}
             setAllInputsObject={setAllInputsObject}
+            isSubmitted={isSubmitted}
+            setIsSubmitted={setIsSubmitted}
           />
         ))}
         <div className="form-group">
