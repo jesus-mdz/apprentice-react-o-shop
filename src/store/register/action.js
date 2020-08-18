@@ -16,7 +16,6 @@ function register(firstName, lastName, username, password) {
         history.push('/');
       },
       (error) => {
-        console.log(error);
         dispatch({ type: actionTypes.REGISTER_FAILURE, error });
       }
     );
