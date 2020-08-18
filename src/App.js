@@ -10,9 +10,9 @@ function App() {
   return (
     <div className="App">
       <Switch>
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/register" component={Register} />
-        <PrivateRoute exact path="/" component={Home} />
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
+        <PrivateRoute path="/" component={Home} />
       </Switch>
     </div>
   );
