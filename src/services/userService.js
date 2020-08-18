@@ -31,9 +31,11 @@ function register(object) {
     body: JSON.stringify(object),
   };
 
-  return fetch(`/users/register`, requestOptions).then((handleResponse) => {
-    return handleResponse;
-  });
+  return fetch(`/users/register`, requestOptions)
+    .then(handleResponse)
+    .then((user) => {
+      return user;
+    });
 }
 
 function handleResponse(response) {

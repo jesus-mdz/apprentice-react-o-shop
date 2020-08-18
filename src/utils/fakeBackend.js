@@ -50,7 +50,7 @@ export function configureFakeBackend() {
         const user = body;
 
         if (users.find((x) => x.username === user.username)) {
-          return error(`Username  ${user.username} is already taken`);
+          return error(`Username ${user.username} is already taken`);
         }
 
         // assign user id and a few other properties then save
