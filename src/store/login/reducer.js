@@ -1,7 +1,7 @@
 import actions from './actionTypes';
 
-let user = JSON.parse(localStorage.getItem('users'));
-const initialState = user ? { loggedIn: true, user: user[0] } : {};
+let user = JSON.parse(localStorage.getItem('user'));
+const initialState = user ? { loggedIn: true, user: user } : {};
 
 export default (state = initialState, action) => {
   switch (action.type) {
