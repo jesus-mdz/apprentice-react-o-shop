@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Header.scss';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import capitalizeFirstLetter from './utils/capitalizeFirstLetter';
 
 function Header() {
   const [show, setShow] = useState(false);
@@ -10,24 +11,12 @@ function Header() {
     setShow(!show);
   }
 
-  const firstName = useSelector(
-    (state) =>
-      `${state.login.user.firstName
-        .slice(0, 1)
-        .toUpperCase()}${state.login.user.firstName
-        .slice(1, state.login.user.firstName.length)
-        .toLowerCase()}`
+  const fullName = useSelector(
+    ({ login }) =>
+      `${capitalizeFirstLetter(login.user.firstName)} ${capitalizeFirstLetter(
+        login.user.lastName
+      )}`
   );
-
-  const lastName = useSelector(
-    (state) =>
-      `${state.login.user.lastName
-        .slice(0, 1)
-        .toUpperCase()}${state.login.user.lastName
-        .slice(1, state.login.user.lastName.length)
-        .toLowerCase()}`
-  );
-  const fullName = `${firstName} ${lastName}`;
 
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
@@ -49,7 +38,7 @@ function Header() {
             </Link>
           </li>
           <li className={`nav-item dropdown ${show ? 'show' : ''}`}>
-            <Link
+            <div
               className="nav-link dropdown-toggle"
               id="dropdown01"
               to="/"
@@ -59,7 +48,7 @@ function Header() {
               onClick={toggleShow}
             >
               {fullName}
-            </Link>
+            </div>
             <div
               className={`dropdown-menu ${show ? 'show' : ''}`}
               aria-labelledby="dropdown01"
