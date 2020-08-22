@@ -4,43 +4,36 @@ import Input from '../Input/Input';
 import { useDispatch } from 'react-redux';
 
 function Form(props) {
-  const { title, inputArr, tertiaryButton, actions } = props;
-  const [isValid, setIsValid] = useState('');
-  const [amountTrueArray, setAmountTrueArray] = useState([]);
+  const {
+    title,
+    inputArray,
+    tertiaryButton,
+    restart,
+    onSubmit,
+    isSubmitted,
+    setIsSubmitted,
+  } = props;
+  const [allInputsObject, setAllInputsObject] = useState({});
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(actions.logout());
+    restart();
   }, [dispatch]);
-
-  const onSubmit = (event) => {
-    const inputLength = inputArr.length;
-    const trueLength = amountTrueArray.length;
-
-    if (inputLength === trueLength) {
-      amountTrueArray.map((inputObject) => {
-        const { field } = inputObject;
-      });
-      setIsValid(true);
-      dispatch(actions.login());
-    } else {
-      event.preventDefault();
-      setIsValid(false);
-    }
-  };
 
   return (
     <div className="col-lg-4 offset-lg-4">
       <h2>{title}</h2>
-      <form onSubmit={onSubmit}>
-        {inputArr.map((title, i) => (
+      <form onSubmit={(event) => onSubmit(event, allInputsObject)}>
+        {inputArray.map((title, index) => (
           <Input
-            key={i}
+            id={index}
+            key={index}
             title={title}
-            isValid={isValid}
-            amountTrueArray={amountTrueArray}
-            setAmountTrueArray={setAmountTrueArray}
+            allInputsObject={allInputsObject}
+            setAllInputsObject={setAllInputsObject}
+            isSubmitted={isSubmitted}
+            setIsSubmitted={setIsSubmitted}
           />
         ))}
         <div className="form-group">

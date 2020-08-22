@@ -7,7 +7,6 @@ import OrderSuccess from '../../pages/OrderSuccess/OrderSuccess';
 import CheckOut from '../../pages/CheckOut/CheckOut';
 import AdminProducts from '../../pages/AdminProducts/AdminProducts';
 import AdminOrders from '../../pages/AdminOrders/AdminOrders';
-
 import { Route, Switch, Redirect } from 'react-router';
 
 function Main() {
