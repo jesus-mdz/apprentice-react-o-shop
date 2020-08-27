@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Header.scss';
-
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function Header() {
   const [show, setShow] = useState(false);
@@ -9,6 +9,10 @@ function Header() {
   function toggleShow() {
     setShow(!show);
   }
+
+  const fullName = useSelector(
+    ({ login }) => `${login.user.firstName} ${login.user.lastName}`
+  );
 
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
@@ -32,14 +36,14 @@ function Header() {
           <li className={`nav-item dropdown ${show ? 'show' : ''}`}>
             <Link
               className="nav-link dropdown-toggle"
-              to="/#"
               id="dropdown01"
+              to="/#"
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded={show}
               onClick={toggleShow}
             >
-              Dropdown
+              {fullName ? <span className="full-name">{fullName}</span> : null}
             </Link>
             <div
               className={`dropdown-menu ${show ? 'show' : ''}`}
