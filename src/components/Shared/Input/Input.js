@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 
 function Input(props) {
   const {
-    type,
     title,
+    name,
+    placeholder,
     allInputsObject,
     setAllInputsObject,
     isSubmitted,
@@ -11,8 +12,7 @@ function Input(props) {
   const [value, setValue] = useState('');
 
   useEffect(() => {
-    allInputsObject[`${title}`] = value;
-    setAllInputsObject(allInputsObject);
+    setAllInputsObject({ ...allInputsObject, [`${name}`]: value });
   }, [value]);
 
   const onChange = (event) => {
@@ -22,10 +22,9 @@ function Input(props) {
   return (
     <div className="form-group">
       <input
-        className={`input100 ${value === '' ? 'is-valid' : ''}`}
-        type={type}
-        name={title}
-        placeholder={title}
+        className={`form-control ${value !== '' ? 'is-valid' : ''}`}
+        name={name}
+        placeholder={placeholder ? placeholder : ''}
         value={value}
         onChange={onChange}
       />

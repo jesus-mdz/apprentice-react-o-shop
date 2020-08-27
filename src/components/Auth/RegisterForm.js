@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Form from '../Shared/Form/Form';
 import registerActions from '../../store/register/action';
 import { useDispatch } from 'react-redux';
+import registerArray from './const/registerArray';
 
 function RegisterForm() {
   const [isSubmitted, setIsSubmitted] = useState('');
@@ -26,7 +27,8 @@ function RegisterForm() {
     <Form
       type="text"
       title="Register"
-      inputArray={['firstName', 'lastName', 'username', 'password']}
+      inputArray={registerArray}
+      primaryButton={{ title: 'Register' }}
       tertiaryButton={{ title: 'Cancel', link: '/login' }}
       restart={() => {
         return null;
