@@ -21,6 +21,7 @@ function Input(props) {
 
   return (
     <div className="form-group">
+      <label htmlFor={name}>{title}</label>
       <input
         className={`form-control ${value !== '' ? 'is-valid' : ''}`}
         name={name}
