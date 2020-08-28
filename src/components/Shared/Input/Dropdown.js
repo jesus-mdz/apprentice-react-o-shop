@@ -9,10 +9,13 @@ function Dropdown(props) {
     setAllInputsObject,
     isSubmitted,
   } = props;
-  const [dropdownValue, setDropdownValue] = useState('');
+  const [dropdownValue, setDropdownValue] = useState(
+    allInputsObject[`${name}`] || ''
+  );
 
   useEffect(() => {
     setAllInputsObject({ ...allInputsObject, [`${name}`]: dropdownValue });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dropdownValue]);
 
   const onChange = (event) => {
@@ -26,10 +29,11 @@ function Dropdown(props) {
         onChange={onChange}
         className="form-control"
         id="exampleFormControlSelect1"
+        defaultValue={dropdownValue}
       >
         {dropdownOptions.map((object, index) => {
           return index === 0 ? (
-            <option key="1" value={''}>
+            <option key={index + 1} value={''}>
               Choose...
             </option>
           ) : (

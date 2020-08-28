@@ -6,6 +6,7 @@ import registerArray from './const/registerArray';
 
 function RegisterForm({ className }) {
   const [isSubmitted, setIsSubmitted] = useState('');
+  const [allInputsObject, setAllInputsObject] = useState({});
   const dispatch = useDispatch();
 
   const onSubmit = (event, object) => {
@@ -37,6 +38,8 @@ function RegisterForm({ className }) {
       onSubmit={onSubmit}
       isSubmitted={isSubmitted}
       setIsSubmitted={setIsSubmitted}
+      allInputsObject={allInputsObject}
+      setAllInputsObject={setAllInputsObject}
     />
   );
 }
