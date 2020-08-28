@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './Header.scss';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import capitalizeFirstLetter from './utils/capitalizeFirstLetter';
 
 function Header() {
   const [show, setShow] = useState(false);
@@ -12,10 +11,7 @@ function Header() {
   }
 
   const fullName = useSelector(
-    ({ login }) =>
-      `${capitalizeFirstLetter(login.user.firstName)} ${capitalizeFirstLetter(
-        login.user.lastName
-      )}`
+    ({ login }) => `${login.user.firstName} ${login.user.lastName}`
   );
 
   return (
@@ -38,17 +34,17 @@ function Header() {
             </Link>
           </li>
           <li className={`nav-item dropdown ${show ? 'show' : ''}`}>
-            <div
+            <Link
               className="nav-link dropdown-toggle"
               id="dropdown01"
-              to="/"
+              to="/#"
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded={show}
               onClick={toggleShow}
             >
-              {fullName}
-            </div>
+              {fullName ? <span className="full-name">{fullName}</span> : null}
+            </Link>
             <div
               className={`dropdown-menu ${show ? 'show' : ''}`}
               aria-labelledby="dropdown01"

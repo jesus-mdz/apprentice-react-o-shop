@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function Input(props) {
+function PriceInput(props) {
   const {
     title,
     name,
@@ -22,18 +22,24 @@ function Input(props) {
   return (
     <div className="form-group">
       <label htmlFor={name}>{title}</label>
-      <input
-        className={`form-control ${value !== '' ? 'is-valid' : ''}`}
-        name={name}
-        placeholder={placeholder ? placeholder : ''}
-        value={value}
-        onChange={onChange}
-      />
+      <div className="input-group mb-3">
+        <div className="input-group-prepend">
+          <span className="input-group-text">$</span>
+        </div>
+        <input
+          className={`form-control ${value !== '' ? 'is-valid' : ''}`}
+          name={name}
+          type="number"
+          placeholder={placeholder ? placeholder : ''}
+          value={value}
+          onChange={onChange}
+        />
+      </div>
       {value === '' && isSubmitted === true ? (
-        <div>{title} cannot be empty</div>
+        <div>Please insert a Price</div>
       ) : null}
     </div>
   );
 }
 
-export default Input;
+export default PriceInput;

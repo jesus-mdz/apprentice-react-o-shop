@@ -1,19 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Input from '../Input/Input';
 import { useDispatch } from 'react-redux';
+import constructInputs from './utils/constructInputs';
 
 function Form(props) {
   const {
     title,
     inputArray,
+    primaryButton,
     tertiaryButton,
     restart,
     onSubmit,
-    isSubmitted,
-    setIsSubmitted,
+    allInputsObject,
   } = props;
-  const [allInputsObject, setAllInputsObject] = useState({});
 
   const dispatch = useDispatch();
 
@@ -22,25 +21,17 @@ function Form(props) {
   }, [dispatch]);
 
   return (
-    <div className="col-lg-4 offset-lg-4">
+    <div>
       <h2>{title}</h2>
       <form onSubmit={(event) => onSubmit(event, allInputsObject)}>
-        {inputArray.map((title, index) => (
-          <Input
-            id={index}
-            key={index}
-            title={title}
-            allInputsObject={allInputsObject}
-            setAllInputsObject={setAllInputsObject}
-            isSubmitted={isSubmitted}
-            setIsSubmitted={setIsSubmitted}
-          />
-        ))}
+        {constructInputs(inputArray, props)}
         <div className="form-group">
-          <button className="btn btn-primary">{title}</button>
-          <button className="btn btn-tertiary">
-            <Link to={tertiaryButton.link}>{tertiaryButton.title}</Link>
-          </button>
+          <button className="btn btn-primary">{primaryButton.title}</button>
+          {tertiaryButton ? (
+            <button className="btn btn-tertiary">
+              <Link to={tertiaryButton.link}>{tertiaryButton.title}</Link>
+            </button>
+          ) : null}
         </div>
       </form>
     </div>

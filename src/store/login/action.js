@@ -7,11 +7,11 @@ const loginActions = {
   logout,
 };
 
-function login(username, password) {
+function login(user) {
   return (dispatch) => {
-    dispatch({ type: actionTypes.LOGIN_REQUEST, user: { username } });
+    dispatch({ type: actionTypes.LOGIN_REQUEST, user: user.username });
 
-    userServices.login(username, password).then(
+    userServices.login(user).then(
       (user) => {
         dispatch({ type: actionTypes.LOGIN_SUCCESS, user });
         history.push('/');
