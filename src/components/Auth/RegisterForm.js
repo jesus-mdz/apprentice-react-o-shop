@@ -4,7 +4,7 @@ import registerActions from '../../store/register/action';
 import { useDispatch } from 'react-redux';
 import registerArray from './const/registerArray';
 
-function RegisterForm() {
+function RegisterForm({ className }) {
   const [isSubmitted, setIsSubmitted] = useState('');
   const dispatch = useDispatch();
 
@@ -25,6 +25,7 @@ function RegisterForm() {
 
   return (
     <Form
+      className={className}
       type="text"
       title="Register"
       inputArray={registerArray}

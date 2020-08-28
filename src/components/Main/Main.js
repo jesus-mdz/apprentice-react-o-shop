@@ -1,7 +1,7 @@
 import React from 'react';
 import './Main.scss';
 import Products from '../../pages/Products/Products';
-import NewProduct from '../../pages/NewProduct/NewProduct';
+import AdminProductsNew from '../../pages/AdminProductsNew/AdminProductsNew';
 import ShoppingCart from '../../pages/ShoppingCart/ShoppingCart';
 import Orders from '../../pages/Orders/Orders';
 import OrderSuccess from '../../pages/OrderSuccess/OrderSuccess';
@@ -20,7 +20,7 @@ function Main() {
         <Route exact path="/orders-success" component={OrderSuccess} />
         <Route exact path="/checkout" component={CheckOut} />
         <Route exact path="/admin-products" component={AdminProducts} />
-        <Route exact path="/admin-products/new" component={NewProduct} />
+        <Route exact path="/admin-products/new" component={AdminProductsNew} />
         <Route exact path="/admin-orders" component={AdminOrders} />
         <Route exact path="/" component={Products} />
         <Redirect from="*" to="/" />

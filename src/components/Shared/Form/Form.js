@@ -21,7 +21,7 @@ function Form(props) {
   }, [dispatch]);
 
   return (
-    <div className="col-lg-4 offset-lg-4">
+    <div>
       <h2>{title}</h2>
       <form onSubmit={(event) => onSubmit(event, allInputsObject)}>
         {constructInputs(inputArray, props)}

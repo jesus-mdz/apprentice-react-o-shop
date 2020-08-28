@@ -21,7 +21,7 @@ function Dropdown(props) {
 
   return (
     <div className="form-group">
-      <label htmlFor="exampleFormControlSelect1">{title}</label>
+      <label htmlFor={name}>{title}</label>
       <select
         onChange={onChange}
         className="form-control"

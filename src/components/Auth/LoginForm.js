@@ -4,7 +4,7 @@ import loginActions from '../../store/login/action';
 import { useDispatch } from 'react-redux';
 import loginArray from './const/loginArray';
 
-function LoginForm() {
+function LoginForm({ className }) {
   const [isSubmitted, setIsSubmitted] = useState('');
   const [allInputsObject, setAllInputsObject] = useState({});
   const dispatch = useDispatch();
@@ -21,6 +21,7 @@ function LoginForm() {
 
   return (
     <Form
+      className={className}
       type="text"
       title="Login"
       inputArray={loginArray}

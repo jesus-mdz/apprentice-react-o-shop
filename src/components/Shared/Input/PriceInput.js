@@ -21,7 +21,7 @@ function PriceInput(props) {
 
   return (
     <div className="form-group">
-      <label htmlFor="price">{title}</label>
+      <label htmlFor={name}>{title}</label>
       <div className="input-group mb-3">
         <div className="input-group-prepend">
           <span className="input-group-text">$</span>
