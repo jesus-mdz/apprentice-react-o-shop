@@ -21,6 +21,7 @@ function Main() {
         <Route exact path="/checkout" component={CheckOut} />
         <Route exact path="/admin-products" component={AdminProducts} />
         <Route exact path="/admin-products/new" component={AdminProductsNew} />
+        <Route exact path="/admin-products/:id" component={AdminProductsNew} />
         <Route exact path="/admin-orders" component={AdminOrders} />
         <Route exact path="/" component={Products} />
         <Redirect from="*" to="/" />

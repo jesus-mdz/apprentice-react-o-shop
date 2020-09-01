@@ -1,6 +1,8 @@
 import React from 'react';
 
-function ProductCard({ title, price, imageUrl }) {
+function ProductCard({ allInputsObject }) {
+  const { title, price, imageUrl } = allInputsObject;
+
   const url = imageUrl
     ? imageUrl
     : 'https://www.avparty.com/wp-content/uploads/2015/07/image-placeholder-300x300.jpg';

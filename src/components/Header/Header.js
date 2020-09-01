@@ -2,12 +2,17 @@ import React, { useState } from 'react';
 import './Header.scss';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import dropdownArray from './const/dropdownPathsArray';
 
 function Header() {
   const [show, setShow] = useState(false);
 
   function toggleShow() {
     setShow(!show);
+  }
+
+  function closeDropdown() {
+    setShow(false);
   }
 
   const fullName = useSelector(
@@ -18,26 +23,26 @@ function Header() {
     <nav className="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
       <div className="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul className="navbar-nav mr-auto">
-          <li className="nav-item active">
-            <Link className="nav-link" to="/">
+          <li className="nav-item">
+            <Link className="nav-link active" to="/">
               Home <span className="sr-only">(current)</span>
             </Link>
           </li>
-          <li className="nav-item active">
+          <li className="nav-item">
             <Link className="nav-link" to="/products">
               Products <span className="sr-only">(current)</span>
             </Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/shopping-cart">
-              Shopping Cart
+              Shopping Cart <span className="sr-only">(current)</span>
             </Link>
           </li>
           <li className={`nav-item dropdown ${show ? 'show' : ''}`}>
             <Link
               className="nav-link dropdown-toggle"
               id="dropdown01"
-              to="/#"
+              to="#"
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded={show}
@@ -49,18 +54,16 @@ function Header() {
               className={`dropdown-menu ${show ? 'show' : ''}`}
               aria-labelledby="dropdown01"
             >
-              <Link className="dropdown-item" to="/orders">
-                My Orders
-              </Link>
-              <Link className="dropdown-item" to="/admin-orders">
-                Manage Orders
-              </Link>
-              <Link className="dropdown-item" to="/admin-products">
-                Manage Products
-              </Link>
-              <Link className="dropdown-item" to="/#">
-                Log Out
-              </Link>
+              {dropdownArray.map((object, index) => (
+                <Link
+                  key={index}
+                  onClick={closeDropdown}
+                  className="dropdown-item"
+                  to={object.path}
+                >
+                  {object.title}
+                </Link>
+              ))}
             </div>
           </li>
         </ul>

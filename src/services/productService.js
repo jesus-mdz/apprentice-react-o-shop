@@ -2,6 +2,7 @@ import handleResponse from './handleResponse';
 
 export const productService = {
   addProduct,
+  getProducts,
 };
 
 function addProduct(product) {
@@ -12,6 +13,15 @@ function addProduct(product) {
   };
 
   return fetch(`/products/add`, requestOptions).then(handleResponse);
+}
+
+function getProducts() {
+  const requestOptions = {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+  };
+
+  return fetch(`/products`, requestOptions).then(handleResponse);
 }
 
 export default productService;

@@ -9,10 +9,11 @@ function PriceInput(props) {
     setAllInputsObject,
     isSubmitted,
   } = props;
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState(allInputsObject[`${name}`] || '');
 
   useEffect(() => {
     setAllInputsObject({ ...allInputsObject, [`${name}`]: value });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
 
   const onChange = (event) => {
