@@ -1,33 +1,23 @@
 const registerArray = [
   {
-    title: 'Title',
-    name: 'title',
+    name: 'firstName',
     type: 'input',
-    placeholder: '',
+    placeholder: 'First Name',
   },
   {
-    title: 'Price',
-    name: 'price',
-    type: 'price',
-    placeholder: '',
-  },
-  {
-    title: 'Category',
-    name: 'category',
-    type: 'dropdown',
-    dropdownOptions: [
-      { name: 'Bread', id: 'bread' },
-      { name: 'Vegetables', id: 'vegetables' },
-      { name: 'Fruits', id: 'fruits' },
-      { name: 'Dairy', id: 'dairy' },
-    ],
-    placeholder: '',
-  },
-  {
-    title: 'Image Url',
-    name: 'imageUrl',
+    name: 'lastName',
     type: 'input',
-    placeholder: '',
+    placeholder: 'Last Name',
+  },
+  {
+    name: 'username',
+    type: 'input',
+    placeholder: 'Username',
+  },
+  {
+    name: 'password',
+    type: 'input',
+    placeholder: 'Password',
   },
 ];
 
