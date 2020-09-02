@@ -26,15 +26,23 @@ function Table({ data, columns, isEditable, editUrl }) {
     dispatch(productActions.getProducts());
   }, []);
 
-  const dataSet = useSelector(({ product }) => {
-    if (product.products) {
-      return product.products;
-    }
-  });
+  const dataSet = JSON.parse(localStorage.getItem('products'));
+
+  if (!dataSet) {
+    localStorage.setItem('products', JSON.stringify([]));
+  }
 
   return (
     <>
-      {dataSet ? (
+      {!dataSet ? (
+        <table className="table">
+          <tbody>
+            <tr>
+              <th>Loading...</th>
+            </tr>
+          </tbody>
+        </table>
+      ) : dataSet.length > 0 ? (
         <table className="table">
           <thead>
             <tr>
@@ -61,7 +69,7 @@ function Table({ data, columns, isEditable, editUrl }) {
         <table className="table">
           <tbody>
             <tr>
-              <th>Loading...</th>
+              <th>No products available. Please add a new product.</th>
             </tr>
           </tbody>
         </table>

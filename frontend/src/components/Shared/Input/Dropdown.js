@@ -22,6 +22,8 @@ function Dropdown(props) {
     setDropdownValue(event.target.value);
   };
 
+  console.log(dropdownValue === '');
+
   return (
     <div className="form-group">
       <label htmlFor={name}>{title}</label>
@@ -44,7 +46,9 @@ function Dropdown(props) {
         })}
       </select>
       {dropdownValue === '' && isSubmitted === true ? (
-        <div>Please choose a Category</div>
+        <div style={{ display: 'block' }} className="invalid-feedback">
+          Please choose a category
+        </div>
       ) : null}
     </div>
   );

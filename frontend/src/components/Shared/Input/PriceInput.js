@@ -28,7 +28,9 @@ function PriceInput(props) {
           <span className="input-group-text">$</span>
         </div>
         <input
-          className={`form-control ${value !== '' ? 'is-valid' : ''}`}
+          className={`form-control ${
+            value === '' && isSubmitted === true ? 'is-invalid' : ''
+          }`}
           name={name}
           type="number"
           placeholder={placeholder ? placeholder : ''}
@@ -37,7 +39,9 @@ function PriceInput(props) {
         />
       </div>
       {value === '' && isSubmitted === true ? (
-        <div>Please insert a Price</div>
+        <div style={{ display: 'block' }} className="invalid-feedback">
+          Please insert a price
+        </div>
       ) : null}
     </div>
   );
