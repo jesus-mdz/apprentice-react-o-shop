@@ -43,7 +43,7 @@ function Dropdown(props) {
           );
         })}
       </select>
-      {dropdownValue === '' && isSubmitted === true ? (
+      {!dropdownValue && isSubmitted ? (
         <div style={{ display: 'block' }} className="invalid-feedback">
           Please choose a category
         </div>

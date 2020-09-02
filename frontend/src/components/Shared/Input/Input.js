@@ -24,15 +24,13 @@ function Input(props) {
     <div className="form-group">
       {title ? <label htmlFor={name}>{title}</label> : null}
       <input
-        className={`form-control ${
-          value === '' && isSubmitted === true ? 'is-invalid' : ''
-        }`}
+        className={`form-control ${!value && isSubmitted ? 'is-invalid' : ''}`}
         name={name}
         placeholder={placeholder ? placeholder : ''}
         value={value}
         onChange={onChange}
       />
-      {value === '' && isSubmitted === true ? (
+      {!value && isSubmitted ? (
         <div className="invalid-feedback">
           {title ? title : placeholder} cannot be empty
         </div>

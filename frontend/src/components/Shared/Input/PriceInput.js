@@ -29,7 +29,7 @@ function PriceInput(props) {
         </div>
         <input
           className={`form-control ${
-            value === '' && isSubmitted === true ? 'is-invalid' : ''
+            !value && isSubmitted ? 'is-invalid' : ''
           }`}
           name={name}
           type="number"
@@ -38,7 +38,7 @@ function PriceInput(props) {
           onChange={onChange}
         />
       </div>
-      {value === '' && isSubmitted === true ? (
+      {!value && isSubmitted ? (
         <div style={{ display: 'block' }} className="invalid-feedback">
           Please insert a price
         </div>
