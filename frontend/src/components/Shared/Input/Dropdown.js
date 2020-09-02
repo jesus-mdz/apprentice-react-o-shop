@@ -22,8 +22,6 @@ function Dropdown(props) {
     setDropdownValue(event.target.value);
   };
 
-  console.log(dropdownValue === '');
-
   return (
     <div className="form-group">
       <label htmlFor={name}>{title}</label>
